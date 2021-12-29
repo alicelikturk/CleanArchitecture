@@ -24,7 +24,7 @@ namespace CleanArchitecture.Persistence
             //    options.EnableSensitiveDataLogging(true);
             //}, ServiceLifetime.Transient);
 
-            service.AddDbContext<ApplicationDbContext>(options=>options.UseInMemoryDatabase("memorydb"));
+            service.AddDbContext<ApplicationDbContext>(options=>options.UseInMemoryDatabase("CleanArchitectureInmemoryDb"));
             service.AddTransient<IProductRepository, ProductRepository>();
             service.AddTransient<IPermissionStoreRepository, PermissionStoreRepository>();
 
