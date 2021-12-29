@@ -1,0 +1,23 @@
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace CleanArchitecture.WebAPI.Extensions
+{
+    public static class ConfigureHealthCheckExtension
+    {
+        public static IApplicationBuilder UseCustomHealthCheck(this IApplicationBuilder app)
+        {
+            return app.UseHealthChecks("/api/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions()
+            {
+                ResponseWriter = async (context, report) =>
+                {
+                    await context.Response.WriteAsync("OK");
+                }
+            });
+        }
+    }
+}
